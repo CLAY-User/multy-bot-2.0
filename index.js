@@ -4,8 +4,6 @@ const fs  = require("fs");
 const bot = new Discord.Client();
 const prefix = config.prefix;
 
-let xp = require("./assets/xp.json");
-
 // Bot turned on
 bot.on("ready", async () => {
 
@@ -47,10 +45,6 @@ fs.readdir("./commands/", (err, files) => {
 
 // Commands input
 bot.on('message', async msg => {
-
-    // xp
-    xpRandom(msg);
-
 
     // If the author of any sent message is a bot - does nothing
     if (msg.author.bot) return;
@@ -103,51 +97,7 @@ bot.on('guildCreate', guild => {
     const channel = guild.channels.cache.find(channel => channel.type === 'text' && channel.permissionsFor(guild.me).has('SEND_MESSAGES'))
     channel.send(welcome)
 
-})
-
-function xpRandom(msg){
-
-    //** XP Stuff **/
-    if(msg.author.bot)
-    {
-        return;
-    }
-    else
-    {
-    let xpAdd = Math.floor(Math.random() * 7) + 8;
-  
-    //reading from xp.json, if not found create entry
-    if(!xp[msg.author.id]){
-      xp[msg.author.id] = {
-        xp: 0,
-        level: 1
-      };
-    }
-  
-    let curxp = xp[msg.author.id].xp;
-    let curlvl = xp[msg.author.id].level;
-    let nxtLvl = Math.ceil(Math.sqrt(Math.abs(xp[msg.author.id].level))) * 300;
-    xp[msg.author.id].xp =  curxp + xpAdd;
-  
-    if(nxtLvl <= xp[msg.author.id].xp){
-      xp[msg.author.id].level = curlvl + 1;
-      let lvlup = new Discord.MessageEmbed()
-      .setTitle("Level Up!")
-      .setColor("DARK_BLUE")
-      .addField("New Level", curlvl + 1)
-      .setTimestamp();
-  
-      msg.channel.send(lvlup).then(msg => {
-        msg.delete({ timeout: 3000 })
-      });
-    }
-  
-    fs.writeFile("./assets/xp.json", JSON.stringify(xp), (err) => {
-      if(err) console.log(err)
-    });
-    return void(0);
-}
-}
+});
 
 // Log in
 bot.login(process.env.TOKEN);
