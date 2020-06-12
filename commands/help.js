@@ -32,7 +32,7 @@ module.exports.run = async (bot, msg, args) =>
     .addFields(
         { name: 'Bot', value: '!invite\n!uptime\n!botinfo' },
     )
-    .addField("\u200B", "\n\n> The server's prefix: `!`\n> Usage example: `!cat`\n> Version: `2.6.20`")
+    .addField("\u200B", "\n\n> The server's prefix: `!`\n> Usage example: `!cat`\n> Version: `2.0.0`")
 
     .setFooter("Made with ❤️ by softik#8376", 'https://cdn.discordapp.com/avatars/707479905058947072/5f47eb44ba2af06b6818003215c2dade.webp');
 
