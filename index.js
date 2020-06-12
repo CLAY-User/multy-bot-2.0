@@ -18,7 +18,7 @@ bot.on("ready", async () => {
             name: `commands | !help`,
             type: "LISTENING",
         },
-        status: 'dnd'
+        status: 'idle'
     });
 
     // Generates a link
