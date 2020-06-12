@@ -25,7 +25,7 @@ module.exports.run = async (bot, msg, args) =>
         let embed = new Discord.MessageEmbed()
             .setColor('DARK_BLUE')
             .setTitle('Congratulations!')
-            .setDescription(`The best user of this server today: ${rand}. Congrats to you!`)
+            .setDescription(`The best user of this server is ${rand}. Congrats to you!`)
         
         msg.channel.send(embed);
 
