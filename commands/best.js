@@ -4,7 +4,7 @@ const talkedRecently = new Set();
 module.exports.run = async (bot, msg, args) =>
 {
 
-    if (talkedRecently.has(msg.author.id) && talkedRecently.has(msg.guild.id)) 
+    if (talkedRecently.has(msg.guild.id)) 
     {
 
         let embed = new Discord.MessageEmbed()
@@ -29,10 +29,6 @@ module.exports.run = async (bot, msg, args) =>
         
         msg.channel.send(embed);
 
-        talkedRecently.add(msg.author.id);
-        setTimeout(() => {
-        talkedRecently.delete(msg.author.id);
-            }, 86400000);
         talkedRecently.add(msg.guild.id);
         setTimeout(() => {
         talkedRecently.delete(msg.guild.id);
