@@ -3,7 +3,7 @@ const config = require("./config.json");
 const fs  = require("fs");
 const bot = new Discord.Client();
 const prefix = config.prefix;
-
+// hello
 // Bot turned on
 bot.on("ready", async () => {
 
