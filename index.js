@@ -67,15 +67,6 @@ bot.on('message', async msg => {
     let cmd = bot.commands.get(command.slice(prefix.length));
     if (cmd) cmd.run(bot, msg, args);
 
-    let badwords = [
-        'valorant',
-        'волорант'
-    ]
-
-    if(badwords.some(word => msg.content.toLowerCase().includes(word))){
-        msg.delete()
-      }
-
 })
 
 // Message events
