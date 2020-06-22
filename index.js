@@ -72,7 +72,9 @@ bot.on('message', async msg => {
         'волорант'
     ]
 
-    if (msg.content == badwords) return msg.reply('Ты пидор');
+    if(badwords.some(word => msg.content.toLowerCase().includes(word))){
+        msg.delete()
+      }
 
 })
 
