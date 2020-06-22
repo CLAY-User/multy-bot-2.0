@@ -72,6 +72,24 @@ bot.on('message', async msg => {
 // Message events
 bot.on('message', msg => {
 
+    let badwords = [
+        'волорант',
+        'valorant',
+        'валорант'
+    ]
+
+    let found = false;
+    for (var i in badwords)
+    {
+        if (msg.content.toLowerCase().includes(badwords[i].toLowerCase())) found = true;
+    }
+    
+    if (found)
+    {
+        msg.delete();
+        msg.reply('Ты пидор');
+    }
+
     if (msg.channel.id === '693026521971163166') {
         msg.react('703093252437442600')
     }
