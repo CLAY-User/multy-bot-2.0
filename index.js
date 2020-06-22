@@ -3,7 +3,7 @@ const config = require("./config.json");
 const fs  = require("fs");
 const bot = new Discord.Client();
 const prefix = config.prefix;
-// hello
+
 // Bot turned on
 bot.on("ready", async () => {
 
@@ -66,6 +66,13 @@ bot.on('message', async msg => {
     // Structure
     let cmd = bot.commands.get(command.slice(prefix.length));
     if (cmd) cmd.run(bot, msg, args);
+
+    let badwords = [
+        'valorant',
+        'волорант'
+    ]
+
+    if (msg.content == badwords) return msg.reply('Ты пидор');
 
 })
 
